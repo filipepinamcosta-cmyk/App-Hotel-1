@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="AppHotel.MainPage"
+             Title="App Hotel"
+             BackgroundColor="#E6F0FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Label Text="Reserva de Quartos"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#003366"/>
+
+            <Entry Placeholder="Nome do hóspede"
+                   Text="{Binding Nome}"
+                   BackgroundColor="White"
+                   TextColor="Black"/>
+
+            <Label Text="Selecione o tipo de quarto:" FontSize="18" TextColor="#004080"/>
+            <Picker ItemsSource="{Binding Quartos}"
+                    SelectedItem="{Binding QuartoSelecionado}"
+                    Title="Escolha um quarto"
+                    BackgroundColor="White"/>
+
+            <Label Text="Data de entrada:" FontSize="18" TextColor="#004080"/>
+            <DatePicker Date="{Binding DataEntrada}" Format="dd/MM/yyyy" MinimumDate="{x:Static sys:DateTime.Today}"/>
+
+            <Label Text="Número de diárias:" FontSize="18" TextColor="#004080"/>
+            <Stepper Minimum="1" Maximum="30" Increment="1"
+                     Value="{Binding NumeroDiarias, Mode=TwoWay}"
+                     HorizontalOptions="Center"/>
+
+            <Label Text="{Binding Resumo}" 
+                   FontSize="16"
+                   TextColor="#006699"
+                   HorizontalOptions="Center"/>
+
+            <Button Text="Ir para Sobre"
+                    BackgroundColor="#004080"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnSobreClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
